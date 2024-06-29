@@ -1,65 +1,33 @@
 import java.util.*;
 
-public class  MathematicalProblem_D {
+ public class MathematicalProblem_D {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        for (int i = 0; i < t; i++) {
-            int n= sc.nextInt();
-            int[] arr = new int[n];
-            String s= sc.next();
-            int cnt=0;
-            for(int j=0; j<n; j++){
-                int num = Integer.parseInt(String.valueOf(s.charAt(j)));
-                if(num==0){
-                    cnt++;
-                }
-                arr[j] = num;
-            }
+        Scanner scanner = new Scanner(System.in);
+        int tests = scanner.nextInt();
 
-            //2 numbers case
-            if(n==2){
-                System.out.println(s);
-            }
+        for(int t = 0; t < tests; t++){
+            int n = scanner.nextInt();
+            char[] s = scanner.next().toCharArray();
 
-            //3 numbers case
-            if(n==3){
-                if(arr[0]==0 || arr[2]==0){
-                    System.out.println("0");
-                } else {
+            int mn = -1;
 
-                }
-            }
+            for(int j = 0; j < s.length - 1; j++){
+                int ans = 1;
 
-            //number of digits greater than 3 and it contains 2 zeros
-            if(n>3 && cnt>1){
-                System.out.println("0");
-            } else if (arr[0]==0 || arr[n-1]==0){
-                System.out.println("0");
-            } else {
-                int minNum=Integer.MAX_VALUE;
-                int minNumLoc=20;
-                for(int j=0; j<n-1; j++){
-                    if(arr[j]<minNum){
-                        minNum=arr[j];
-                        minNumLoc=j;
+                for(int i = 0; i < n; i++){
+                    int x;
+                    x = s[i] - '0';
+                    if(j == i){
+                        x *= 10;
+                        x += s[i + 1] - '0';
+                        i++;
                     }
+                    if(ans * x > ans + x)ans += x;
+                    else ans *= x;
                 }
-                int newNum=(minNum*10)+arr[minNumLoc+1];
-                int arr1[]=new int[n-1];
-                for(int j=0; j<n-1; j++){
-                    if(j<minNumLoc) {
-                        arr1[j] = arr[j];
-                    }
-                    if(j==minNumLoc){
-                        arr1[j]=newNum;
-                    }
-                    if(j>minNumLoc){
-                        arr1[j] = arr[j+1];
-                    }
-                }
-
+                if(mn == -1 || mn > ans)mn = ans;
             }
+            System.out.println(mn);
 
         }
     }
