@@ -12,7 +12,7 @@ public class SecretBox_E {
             BigInteger y = sc.nextBigInteger();
             BigInteger z = sc.nextBigInteger();
             BigInteger k = sc.nextBigInteger();
-            BigInteger ANS = BigInteger.ONE;
+            BigInteger ANS = BigInteger.ZERO;
 
             for (BigInteger a = BigInteger.ONE; a.compareTo(x) <= 0; a = a.add(BigInteger.ONE)) {
                 for (BigInteger b = BigInteger.ONE; b.compareTo(y) <= 0; b = b.add(BigInteger.ONE)) {
