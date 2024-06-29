@@ -1,33 +1,33 @@
-import java.math.BigInteger;
 import java.util.Scanner;
 
 public class SecretBox_E {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        sc.nextLine();
+        Scanner in=new Scanner(System.in);
+        long t=in.nextInt();
 
-        for (int i = 0; i < t; i++) {
-            BigInteger x = sc.nextBigInteger();
-            BigInteger y = sc.nextBigInteger();
-            BigInteger z = sc.nextBigInteger();
-            BigInteger k = sc.nextBigInteger();
-            BigInteger ANS = BigInteger.ZERO;
+        while(t-->0)
+        {
+            long x=in.nextLong();
+            long y=in.nextLong();
+            long z=in.nextLong();
 
-            for (BigInteger a = BigInteger.ONE; a.compareTo(x) <= 0; a = a.add(BigInteger.ONE)) {
-                for (BigInteger b = BigInteger.ONE; b.compareTo(y) <= 0; b = b.add(BigInteger.ONE)) {
-                    if (k.mod(a.multiply(b)).equals(BigInteger.ZERO) && k.divide(a.multiply(b)).compareTo(z) <= 0) {
-                        BigInteger s1 = a;
-                        BigInteger s2 = b;
-                        BigInteger s3 = k.divide(a.multiply(b));
-                        BigInteger ans = (x.subtract(s1).add(BigInteger.ONE))
-                                .multiply(y.subtract(s2).add(BigInteger.ONE))
-                                .multiply(z.subtract(s3).add(BigInteger.ONE));
-                        ANS = ANS.max(ans);
-                    }
+            long v=in.nextLong();
+
+            long ans=0;
+            for(long i=1;i<=x;i++)
+            {
+                for(long j=1;j<=y;j++)
+                {
+                    long k=v/(i*j);
+
+                    if(i*j*k ==v)
+                        ans=Math.max((x-i+1)*(y-j+1)*(z-k+1),ans);
                 }
             }
-            System.out.println(ANS);
+
+            System.out.println(ans);
         }
+
+
     }
 }
