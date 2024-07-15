@@ -15,7 +15,6 @@ public class NeneAndCardGame_B {
                     set.add(num);
                 }
             }
-
             System.out.println(cnt);
         }
     }
