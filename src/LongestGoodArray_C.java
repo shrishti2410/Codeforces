@@ -11,7 +11,6 @@ public class LongestGoodArray_C {
             while ((l+i)<=r){
                 l=l+i;
                 cnt++;
-//                System.out.print(l +" ");
                 i++;
             }
             System.out.println(cnt);
