@@ -7,9 +7,7 @@ public class FreyaTheFrog_C {
             int x = sc.nextInt();
             int y = sc.nextInt();
             int k = sc.nextInt();
-
 //            int X = 0, Y=0;
-
 //            if(x/k==0) {
 //                 X =x/k;
 //            } else {
